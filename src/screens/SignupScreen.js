@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
   },
   text_header: {
     color: '#fff',
-    marginTop:190,
+    marginTop:200,
     fontWeight: 'bold',
     fontSize: 40
   },

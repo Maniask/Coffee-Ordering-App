@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { View, Text, StyleSheet, Dimensions, ImageBackground, TouchableOpacity, Alert, Platform } from 'react-native';
 import FormButton from '../components/FormButton';
 import FormInput from '../components/FormInput';
+import SocialButton from '../components/SocialButton';
 import { AuthContext } from '../navigation/AuthProvider';
 import Loading from '../components/Loading'
 import Feather from 'react-native-vector-icons/Feather'
@@ -10,7 +11,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome'
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { login, loading } = useContext(AuthContext);
+  const { login, loading, googleLogin } = useContext(AuthContext);
   
   if (loading) {
     return <Loading />;
@@ -46,6 +47,17 @@ export default function LoginScreen({ navigation }) {
           secureTextEntry={true}
         />
         <FormButton buttonTitle='Login' style={{marginLeft:35}} onPress={() => login(email, password)} />
+        
+        <View>
+          <SocialButton
+            buttonTitle="Login with Google"
+            btnType="google"
+            color="#de4d41"
+            backgroundColor="#f5e7ea"
+            onPress={() => googleLogin()}
+          />
+        </View>
+        
         <TouchableOpacity
           style={styles.navButton}
           onPress={() => navigation.navigate('Signup')}
@@ -92,7 +104,7 @@ const styles = StyleSheet.create({
   },
   text_header: {
     color: '#fff',
-    marginTop:190,
+    marginTop:200,
     fontWeight: 'bold',
     fontSize: 40
   },

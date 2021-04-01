@@ -19,9 +19,9 @@ const styles = StyleSheet.create({
   input: {
     paddingLeft: 10,
     paddingBottom:10,
-    marginBottom: 8,
+    marginBottom: 12,
     width: windowWidth / 1.5,
-    height: windowHeight / 16,
+    height: windowHeight / 14,
     fontSize: 18,
     borderRadius: 8,
     borderWidth: 1,
