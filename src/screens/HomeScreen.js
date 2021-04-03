@@ -9,6 +9,7 @@ export default function HomeScreen({navigation}) {
     <View style={styles.container}>
       <Text style={styles.text}>Welcome user {user.uid}</Text>
       <FormButton buttonTitle='Logout' onPress={() => logout()} />
+      <FormButton buttonTitle='Go to movies Screen' onPress={()=>navigation.navigate('MoviesScreen')} />
     </View>
   );
 }
