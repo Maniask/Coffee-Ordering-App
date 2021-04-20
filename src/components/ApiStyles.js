@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Dimensions } from 'react-native';
 
-const deviceHeight = Dimensions.get('screen').height
+const { deviceWidth, deviceHeight } = Dimensions.get('window')
+
 const styles = {
     parentContainer: {
         height: deviceHeight,
@@ -13,7 +14,7 @@ const styles = {
         paddingTop:32
     },
     container: {
-        backgroundColor: "#fff"
+        backgroundColor: "#fff",
     },
     loader: {
         flex:1,
@@ -22,12 +23,39 @@ const styles = {
         backgroundColor: "#fff"
     },
     list: {
-        paddingVertical: 4,
-        margin: 5,
-        backgroundColor: "#fff"
+        flex:1,
+        flexDirection:'row',
+        paddingVertical: 6,
+        paddingHorizontal:10,
+        margin:7,
+        
     },
-    lightText:{
-        fontSize:20,
+    title:{
+        marginHorizontal: 5,
+        marginVertical: 3,
+        fontSize:15,
+        fontWeight:'bold',
+    },
+    price:{
+        fontSize:15,
+        marginHorizontal:7,    
+        color:'gray'
+
+    },
+    addButton:{
+        marginHorizontal:40,
+        marginTop: 15,
+        marginBottom: 15,
+        width: 4,
+        height: 15,
+        padding: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 10,
+    },
+    wrapper:{
+        marginBottom:100,
     }
+    
 };
 export default styles;

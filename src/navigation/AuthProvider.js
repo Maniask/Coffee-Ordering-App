@@ -1,7 +1,7 @@
 import React, { createContext, useState } from 'react';
 import auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin'
-
+import firestore from '@react-native-firebase/firestore'
 /**
  * This provider is created
  * to access user in whole app
@@ -23,6 +23,7 @@ export const AuthProvider = ({ children }) => {
         setUser,
         loading,
         setLoading,
+        
         login: async (email, password) => {
           setLoading(true);
           try {
@@ -51,12 +52,33 @@ export const AuthProvider = ({ children }) => {
         register: async (email, password) => {
           setLoading(true);
           try {
-            await auth().createUserWithEmailAndPassword(email, password);
+            await auth().createUserWithEmailAndPassword(email, password)
+            .then(() => {
+              //Once the user creation has happened successfully, we can add the currentUser into firestore
+              //with the appropriate details.
+              firestore().collection('users').doc(auth().currentUser.uid)
+              .set({
+                  fname: '',
+                  lname: '',
+                  email: email,
+                  createdAt: firestore.Timestamp.fromDate(new Date()),
+                  userImg: null,
+              })
+              //ensure we catch any errors at this stage to advise us if something does go wrong
+              .catch(error => {
+                  console.log('Something went wrong with added user to firestore: ', error);
+              })
+              setLoading(false);
+            })
+            //we need to catch the whole sign up process if it fails too.
+            .catch(error => {
+                console.log('Something went wrong with sign up: ', error);
+            });
           } catch (e) {
             console.log(e);
           }
-          setLoading(false);
         },
+
         logout: async () => {
           try {
             await auth().signOut();

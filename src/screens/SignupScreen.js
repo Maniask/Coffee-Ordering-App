@@ -6,11 +6,14 @@ import { AuthContext } from '../navigation/AuthProvider';
 import Loading from '../components/Loading'
 import Feather from 'react-native-vector-icons/Feather'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import SocialButton from '../components/SocialButton'
 
 export default function SignupScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { register, loading } = useContext(AuthContext);
+  const [confirmPassword, setConfirmPassword] = useState();
+
+  const { register, loading, googleLogin } = useContext(AuthContext);
 
   if (loading) {
     return <Loading />;
@@ -47,7 +50,8 @@ export default function SignupScreen() {
         />
         <Text style={styles.text_footer}>Confirm Password  <FontAwesome name="lock" size={20} /></Text>
         <FormInput
-          value={password}
+          value={confirmPassword}
+          onChangeText={(userPassword) => setConfirmPassword(userPassword)}
           placeholderText='Confirm Your Password'
           secureTextEntry={true}
         />
@@ -56,6 +60,15 @@ export default function SignupScreen() {
           style={{marginLeft:35}}
           onPress={() => register(email, password)}
         />
+        <View>
+          <SocialButton
+            buttonTitle="Signup with Google"
+            btnType="google"
+            color="#de4d41"
+            backgroundColor="#f5e7ea"
+            onPress={() => googleLogin()}
+          />
+        </View>
       </View> 
     </View>
   );

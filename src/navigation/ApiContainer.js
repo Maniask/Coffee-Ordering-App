@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Button} from 'react-native'
 import ApiView from '../screens/ApiView';
 import axios from 'axios';
 import styles from '../components/ApiStyles';
@@ -8,6 +9,10 @@ import {
     TouchableOpacity,
     Image
 } from "react-native";
+import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import FormButton from '../components/FormButton'
+import AddButton from '../components/AddButton'
+
 class ApiContainer extends Component {
     constructor(props) {
         super(props);
@@ -25,14 +30,14 @@ class ApiContainer extends Component {
             loading: true,
 
         })
-        fetch("https://api.androidhive.info/json/movies.json")
+        fetch("https://whispering-eyrie-76050.herokuapp.com/coffee_menus")
             .then(response => response.json())
             .then((responseJson) => {
                 console.log('getting data from fetch', responseJson)
                 setTimeout(() => {
                     this.setState({
                         loading: false,
-                        dataSource: responseJson
+                        dataSource: responseJson.data
                     })
                 }, 2000)
 
@@ -45,15 +50,16 @@ class ApiContainer extends Component {
             loading: true,
 
         })
-        axios.get("https://api.androidhive.info/json/movies.json")
+        axios.get("https://whispering-eyrie-76050.herokuapp.com/coffee_menus")
             .then(response => {
                 console.log('getting data from axios', response.data);
                 setTimeout(() => {
                     this.setState({
                         loading: false,
-                        axiosData: response.data
+                        axiosData: response.data.data
                     })
                 }, 2000)
+                
             })
             .catch(error => {
                 console.log(error);
@@ -62,11 +68,16 @@ class ApiContainer extends Component {
 
     renderItem = (data) => {
         return (
-            <TouchableOpacity style={styles.list}>
-                <Text style={styles.lightText}>Title: {data.item.title}</Text>
-                <Text style={styles.lightText}>Rating: {data.item.rating}</Text>
-                <Image source={{uri:data.item.image}} style={{height:180, width:400}}/>
-            </TouchableOpacity>
+            <View style={styles.list}>
+                <Image source={{uri:data.item.imgUrl}} style={{height:100, width:90, borderRadius:12, margin:8}}/>
+                <View>
+                    <View>
+                        <Text style={styles.title}> {data.item.name}</Text>
+                        <Text style={styles.price}>{'\u20B9'}{data.item.price}{" "}</Text>
+                    </View>
+                    <AddButton style={{marginLeft:35}} buttonTitle='Add'/>
+                </View>
+            </View>
         )
 
     }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, Button, FlatList, ActivityIndicator } from 'react-native';
+import { View, Text, Button, FlatList, ActivityIndicator, ScrollView } from 'react-native';
 import styles from '../components/ApiStyles'
 ;
 const ApiView = (props) => {
@@ -24,15 +24,17 @@ const ApiView = (props) => {
 
             {fromFetch ?
                 <FlatList
+                    style={styles.wrapper}
                     data={dataSource}
                     ItemSeparatorComponent={FlatListItemSeparator}
                     renderItem={item => renderItem(item)}
-                    keyExtractor={item => item.id}
+                    keyExtractor={(item) => item.id}
                 /> : <FlatList
+                    style={styles.wrapper}
                     data={axiosData}
                     ItemSeparatorComponent={FlatListItemSeparator}
                     renderItem={item => renderItem(item)}
-                    keyExtractor={item => item.id}
+                    keyExtractor={(item) =>  item.id}
                 />
             }
             {loading &&
