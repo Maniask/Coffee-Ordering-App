@@ -55,7 +55,46 @@ const styles = {
     },
     wrapper:{
         marginBottom:100,
-    }
+    },
+    sliderContainer: {
+        height: 200,
+        width: '90%',
+        marginTop: 10,
+        justifyContent: 'center',
+        alignSelf: 'center',
+        borderRadius: 8,
+        marginBottom:10,
+    },
+    slide: {
+        flex: 1,
+        justifyContent: 'center',
+        backgroundColor: 'transparent',
+        borderRadius: 8,
+    },
+    sliderImage: {
+        height: '100%',
+        width: '100%',
+        alignSelf: 'center',
+        borderRadius: 8,
+    },
+    cardsWrapper: {
+        marginTop: 20,
+        width: '90%',
+        alignSelf: 'center',
+    },
+    userBtnTxt: {
+        color: '#C4A484',
+    },
+    userBtn: {
+        borderColor: '#C4A484',
+        borderWidth: 2,
+        borderRadius: 10,
+        paddingVertical: 8,
+        paddingHorizontal: 12,
+        marginHorizontal: 5,
+        marginBottom:20,
+        alignItems:'center'
+    },
     
 };
 export default styles;

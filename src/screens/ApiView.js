@@ -1,24 +1,19 @@
 import React, { Component } from 'react'
-import { View, Text, Button, FlatList, ActivityIndicator, ScrollView } from 'react-native';
+import {TouchableOpacity, View, Text, Button, FlatList, ActivityIndicator, ScrollView } from 'react-native';
 import styles from '../components/ApiStyles'
 ;
 const ApiView = (props) => {
     const { goForFetch, goForAxios, fromFetch, fromAxios, axiosData, renderItem, FlatListItemSeparator, dataSource, loading } = props
     return (
         <View style={styles.parentContainer}>
-            <View style={{ marginTop: 18 }}>
-                <Button
-                    title={'Click using Fetch'}
-                    onPress={goForFetch}
-                    color='green'
-                />
-            </View>
             <View style={{ marginTop: 10 }}>
-                <Button
-                    title={'Click using axios'}
-                    onPress={goForAxios}
-                    color='green'
-                />
+
+                <TouchableOpacity
+                style={styles.userBtn}
+                onPress={goForAxios}
+                >
+                    <Text style={styles.userBtnTxt}>Show Menu</Text>
+                </TouchableOpacity>
             </View>
 
 

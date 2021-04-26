@@ -8,6 +8,8 @@ import MoviesScreen from '../screens/MoviesScreen'
 import ProfileScreen from '../screens/ProfileScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import UpdateProfileScreen from '../screens/UpdateProfileScreen';
+import DetailsScreen from '../screens/DetailsScreen'
+import OrderDeliveryScreen from '../screens/OrderDeliveryScreen'
 
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
@@ -24,6 +26,8 @@ const Tab = createBottomTabNavigator();
 // }
 
 const ProfileStack = createStackNavigator();
+const MenuStack = createStackNavigator();
+
 
 function ProfileStackScreen(){
   return(
@@ -34,6 +38,15 @@ function ProfileStackScreen(){
     )
 }
 
+function MenuStackScreen(){
+  return(
+    <MenuStack.Navigator>
+      <MenuStack.Screen name="HomeScreen" component={HomeScreen} options={{headerStyle:{backgroundColor:'#C4A484'}, header:()=>null }}/>
+      <MenuStack.Screen name="DetailsScreen" component={DetailsScreen} options={{headerStyle:{backgroundColor:'#C4A484'}, header:()=>null}}/>
+      <MenuStack.Screen name="OrderDeliveryScreen" component={OrderDeliveryScreen} options={{headerStyle:{backgroundColor:'#C4A484'}, header:()=>null}}/>
+    </MenuStack.Navigator>
+    )
+}
 
 export default function HomeStack() {
   return (
@@ -45,7 +58,7 @@ export default function HomeStack() {
     >
       <Tab.Screen
         name= "Home"
-        component={HomeScreen}
+        component={MenuStackScreen}
         options={{
           tabBarLabel: 'Home',
           tabBarIcon: ({ color, size }) => (
