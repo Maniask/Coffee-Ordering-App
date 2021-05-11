@@ -12,6 +12,7 @@ import {
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import FormButton from '../components/FormButton'
 import AddButton from '../components/AddButton'
+import {SearchBar} from 'react-native-elements'
 
 class ApiContainer extends Component {
     constructor(props) {
@@ -21,7 +22,8 @@ class ApiContainer extends Component {
             fromFetch: false,
             fromAxios: false,
             dataSource: [],
-            axiosData: null
+            axiosData: null,
+            search :''
         };
     }
     goForFetch = () => {

@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import HomeScreen from '../screens/HomeScreen';
-import MoviesScreen from '../screens/MoviesScreen'
+import SearchScreen from '../screens/SearchScreen'
 import ProfileScreen from '../screens/ProfileScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import UpdateProfileScreen from '../screens/UpdateProfileScreen';
@@ -20,14 +20,14 @@ const Tab = createBottomTabNavigator();
 //   return (
 //     <Stack.Navigator>
 //       <Stack.Screen name='HomeScreen' component={HomeScreen} />
-//       <Stack.Screen name='MoviesScreen' component={MoviesScreen}/>
+//       <Stack.Screen name='SearchScreen' component={SearchScreen}/>
 //     </Stack.Navigator>
 //   );
 // }
 
 const ProfileStack = createStackNavigator();
-const MenuStack = createStackNavigator();
-
+const MenuStack1 = createStackNavigator();
+const MenuStack2 = createStackNavigator();
 
 function ProfileStackScreen(){
   return(
@@ -38,14 +38,24 @@ function ProfileStackScreen(){
     )
 }
 
-function MenuStackScreen(){
+function MenuStack1Screen(){
   return(
-    <MenuStack.Navigator>
-      <MenuStack.Screen name="HomeScreen" component={HomeScreen} options={{headerStyle:{backgroundColor:'#C4A484'}, header:()=>null }}/>
-      <MenuStack.Screen name="DetailsScreen" component={DetailsScreen} options={{headerStyle:{backgroundColor:'#C4A484'}, header:()=>null}}/>
-      <MenuStack.Screen name="OrderDeliveryScreen" component={OrderDeliveryScreen} options={{headerStyle:{backgroundColor:'#C4A484'}, header:()=>null}}/>
-    </MenuStack.Navigator>
-    )
+    <MenuStack1.Navigator>
+      <MenuStack1.Screen name="HomeScreen" component={HomeScreen} options={{headerStyle:{backgroundColor:'#C4A484'}, header:()=>null }}/>
+      <MenuStack1.Screen name="DetailsScreen" component={DetailsScreen} options={{headerStyle:{backgroundColor:'#C4A484'}, header:()=>null}}/>
+      <MenuStack1.Screen name="OrderDeliveryScreen" component={OrderDeliveryScreen} options={{headerStyle:{backgroundColor:'#C4A484'}, header:()=>null}}/>
+    </MenuStack1.Navigator>
+  )
+}
+
+function MenuStack2Screen(){
+  return(
+    <MenuStack2.Navigator>
+      <MenuStack2.Screen name="SearchScreen" component={SearchScreen} options={{headerStyle:{backgroundColor:'#C4A484'}, header:()=>null }}/>
+      <MenuStack2.Screen name="DetailsScreen" component={DetailsScreen} options={{headerStyle:{backgroundColor:'#C4A484'}, header:()=>null}}/>
+      <MenuStack2.Screen name="OrderDeliveryScreen" component={OrderDeliveryScreen} options={{headerStyle:{backgroundColor:'#C4A484'}, header:()=>null}}/>
+    </MenuStack2.Navigator>
+  )
 }
 
 export default function HomeStack() {
@@ -53,12 +63,12 @@ export default function HomeStack() {
     <Tab.Navigator
       initialRouteName="HomeScreen"
       tabBarOptions={{
-        activeTintColor: '#79443B',
+        activeTintColor: '#F0913F',
       }}
     >
       <Tab.Screen
         name= "Home"
-        component={MenuStackScreen}
+        component={MenuStack1Screen}
         options={{
           tabBarLabel: 'Home',
           tabBarIcon: ({ color, size }) => (
@@ -67,12 +77,12 @@ export default function HomeStack() {
         }}
       />
       <Tab.Screen
-        name="MoviesScreen"
-        component={MoviesScreen}
+        name="SearchScreen"
+        component={MenuStack2Screen}
         options={{
-          tabBarLabel: 'Notification',
+          tabBarLabel: 'Search',
           tabBarIcon: ({ color, size }) => (
-            <FontAwesome name="bell" color={color} size={size} />
+            <FontAwesome name="search" color={color} size={size} />
           ),
         }}
       />

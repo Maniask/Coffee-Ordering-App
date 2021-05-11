@@ -98,19 +98,19 @@ export default function Profile({navigation}) {
       <View style={styles.menuWrapper}>
         <TouchableRipple onPress={() => {}}>
           <View style={styles.menuItem}>
-            <FontAwesome name="comment" color="#C4A484" size={25}/>
+            <FontAwesome name="comment" color="#F0913F" size={25}/>
             <Text style={styles.menuItemText}>SEND FEEDBACK</Text>
           </View>
         </TouchableRipple>
         <TouchableRipple onPress={() => {}}>
           <View style={styles.menuItem}>
-            <FontAwesome name="server" color="#C4A484" size={25}/>
+            <FontAwesome name="server" color="#F0913F" size={25}/>
             <Text style={styles.menuItemText}>SUPPORT</Text>
           </View>
         </TouchableRipple>
         <TouchableRipple onPress={() => {}}>
           <View style={styles.menuItem}>
-            <FontAwesome name="sign-out" color="#C4A484" size={25}/>
+            <FontAwesome name="sign-out" color="#F0913F" size={25}/>
             <Text style={styles.menuItemText} onPress={() => logout()}>LOG OUT</Text>
           </View>
         </TouchableRipple>
@@ -168,10 +168,10 @@ const styles = StyleSheet.create({
     lineHeight: 26,
   },
   userBtnTxt: {
-    color: '#C4A484',
+    color: '#F0913F',
   },
   userBtn: {
-    borderColor: '#C4A484',
+    borderColor: '#F0913F',
     borderWidth: 2,
     borderRadius: 3,
     paddingVertical: 8,

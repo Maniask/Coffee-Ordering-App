@@ -31,16 +31,22 @@ const styles = {
         
     },
     title:{
-        marginHorizontal: 5,
         marginVertical: 3,
         fontSize:15,
         fontWeight:'bold',
+        color:'#F0913F',
     },
     price:{
-        fontSize:15,
-        marginHorizontal:7,    
-        color:'gray'
+        fontSize:15,   
+        color:'#F0913F',
+        marginRight:120,
 
+    },
+    description:{
+        fontSize:13,
+        marginRight:120,
+        color:'gray',
+        marginBottom:3
     },
     addButton:{
         marginHorizontal:40,
@@ -83,10 +89,10 @@ const styles = {
         alignSelf: 'center',
     },
     userBtnTxt: {
-        color: '#C4A484',
+        color: '#F0913F',
     },
     userBtn: {
-        borderColor: '#C4A484',
+        borderColor: '#F0913F',
         borderWidth: 2,
         borderRadius: 10,
         paddingVertical: 8,

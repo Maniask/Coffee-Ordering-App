@@ -75,9 +75,15 @@ export default function HomeScreen({navigation}){
                   <View>
                       <View>
                           <Text style={styles.title}> {item.name}</Text>
+                          <View><Text style={styles.description} numberOfLines={2} ellipsizeMode='tail' > {item.description}</Text></View>
                           <Text style={styles.price}>{'\u20B9'}{item.price}{" "}</Text>
                       </View>
-                      <AddButton style={{marginLeft:35}} buttonTitle='Add'/>
+                      <TouchableOpacity
+                        style={[styles.userBtn,{marginTop:80, width:90,position:'absolute',marginLeft:170}]}
+                        onPress={() => Alert.alert('Item Added')}
+                        >
+                        <Text style={styles.userBtnTxt}>Add</Text>
+                      </TouchableOpacity>
                   </View>
               </TouchableOpacity>
             )

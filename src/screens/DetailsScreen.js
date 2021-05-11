@@ -70,6 +70,12 @@ export default function DetailsScreen({navigation, route}){
         return total.toFixed(2)
     }
 
+    const finalSumOrder = (sumOrder) => {  
+        navigation.navigate("OrderDeliveryScreen", {
+          sumOrder,
+        })  
+    } 
+
     function renderHeader(){
         return(
             <View style={{flexDirection:'row'}}>
@@ -111,6 +117,10 @@ export default function DetailsScreen({navigation, route}){
                         paddingRight: 20,
                         justifyContent: 'center'
                     }}
+                    onPress= {()=>navigation.navigate("OrderDeliveryScreen",{
+                            sumOrder: sumOrder(),
+                            itemCount: getBasketItemCount()
+                    })}
                 >
                     <Ionic name="cart" size={30} />
                 </TouchableOpacity>
@@ -154,7 +164,7 @@ export default function DetailsScreen({navigation, route}){
                             }}
                             onPress={()=>editOrder("-", route.params.item.id, route.params.item.price) }
                         >
-                            <Text style={{fontSize:35}}>-</Text>
+                            <Text style={{fontSize:35, color:'#F0913F'}}>-</Text>
                         </TouchableOpacity>
 
                         <View
@@ -165,7 +175,7 @@ export default function DetailsScreen({navigation, route}){
                                 justifyContent: 'center'
                             }}
                         >
-                            <Text style={{fontSize:20}}>{getOrderQty(route.params.item.id)}</Text>
+                            <Text style={{fontSize:20, color:'#F0913F'}}>{getOrderQty(route.params.item.id)}</Text>
                         </View>
 
                         <TouchableOpacity
@@ -180,7 +190,7 @@ export default function DetailsScreen({navigation, route}){
                             onPress={()=>editOrder("+", route.params.item.id, route.params.item.price) }
                             
                         >
-                            <Text style={{fontSize:20}}>+</Text>
+                            <Text style={{fontSize:20, color:'#F0913F'}}>+</Text>
                         </TouchableOpacity>
                     </View>
                     <View
@@ -190,7 +200,7 @@ export default function DetailsScreen({navigation, route}){
                             paddingHorizontal: 15
                     }}
                     >
-                        <Text style={{ fontSize:15, marginVertical:10, textAlign:'center', fontWeight:'bold' }}>{'\u20B9'}{route.params.item.price}</Text>
+                        <Text style={{ fontSize:15, marginVertical:10, textAlign:'center', fontWeight:'bold', color:'#F0913F' }}>{'\u20B9'}{route.params.item.price}</Text>
                         <Text>{route.params.item.description}</Text>
                     </View>
                 </View>                
@@ -218,8 +228,9 @@ export default function DetailsScreen({navigation, route}){
                         borderBottomWidth: 1
                     }}
                 >
-                    <Text style={{fontSize:15 }}>{getBasketItemCount()} Items in Cart</Text>
-                    <Text style={{fontSize:15 }}>{'\u20B9'}{sumOrder()}</Text>
+                    
+                    <Text style={{fontSize:15, color:'#F0913F' }}>{getBasketItemCount()} Items in Cart</Text>
+                    <Text style={{fontSize:15, color:'#F0913F' }}>{'\u20B9'}{sumOrder()}</Text>
                 </View>
 
                 <View
@@ -231,8 +242,8 @@ export default function DetailsScreen({navigation, route}){
                     }}
                 >
                     <View style={{ flexDirection: 'row' }}>
-                        <FontAwesome name="map-marker" size={20}/>
-                        <Text style={{ marginLeft: 10, fontSize:15 }}>Location</Text>
+                        <FontAwesome name="map-marker" size={20} color={'#F0913F'}/>
+                        <Text style={{ marginLeft: 10, fontSize:15, color:'#F0913F' }}>Location</Text>
                     </View>
                 </View>
 
@@ -247,12 +258,13 @@ export default function DetailsScreen({navigation, route}){
                         style={{
                             width: '100%',
                             padding: 10,
-                            backgroundColor: '#C4A484',
+                            backgroundColor: '#F0913F',
                             alignItems: 'center',
                             borderRadius: 8,
                         }}
                         onPress= {()=>navigation.navigate("OrderDeliveryScreen",{
-                            menu:menu
+                            sumOrder: sumOrder(),
+                            itemCount: getBasketItemCount()
                         })}
                     >
                         <Text style={{ color: 'white', fontSize:15}}>Order</Text>
